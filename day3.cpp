@@ -2,26 +2,29 @@
 using namespace std;
 
 void harsh() {
-    int n, x;
-    cin >> n >> x;
-    vector<int> v(n);
-    for (int i = 0; i < n; i++) {
-        cin >> v[i];
-    }
-
-    
-    v.insert(v.begin(), 0);
-    v.push_back(x);
-
-    int maxGap = 2*(v[v.size()-1]-v[v.size()-2]);
-    for (int i = 1; i < v.size(); i++) {
-        int gap = v[i] - v[i - 1];
-        if (gap > maxGap) {
-            maxGap = gap;
+    int n;
+    cin>>n;
+    string s;
+    cin>>s;
+    bool cont_3_dot=false;
+    int count_dot=0;
+    for(int i=0;i<n;i++)
+    {
+        if(s[i]=='.' && i+1<n && s[i+1]=='.' && i+2 < n && s[i+2]=='.')
+        {
+            cont_3_dot=true;
+            break;
+        }
+        if(s[i]=='.')
+        {
+            count_dot++;
         }
     }
-
-    cout << maxGap << endl;
+    if(cont_3_dot)
+    cout<<2<<endl;
+    else 
+    cout<<count_dot<<endl;
+    
 }
 
 int main() {
